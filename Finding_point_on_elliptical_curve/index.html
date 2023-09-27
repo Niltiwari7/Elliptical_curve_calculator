@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elliptic Curve</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main">
+        <div>
+            <label for="a">Enter the coefficient of x: </label>
+            <input type="number" id="a">
+        </div>
+        <div>
+            <label for="b">Enter the value of b: </label>
+            <input type="number" id="b">
+        </div>
+        <div>
+            <label for="p">Enter the modulo: </label>
+            <input type="number" id="p">
+        </div>
+        <button onclick="generateTable()">Generate Table</button>
+        <div>
+            <table id="resultTable">
+                <thead>
+                    <tr>
+                        <th>X</th>
+                        <th>Y</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function generateTable() {
+            const a = parseInt(document.getElementById('a').value);
+            const b = parseInt(document.getElementById('b').value);
+            const p = parseInt(document.getElementById('p').value);
+
+            if (Math.pow(4, a) + Math.pow(27, b) === 0) {
+                alert("Give other values of a and b");
+            } else {
+                const result1 = Array.from({ length: p }, (_, x) => (Math.pow(x, 3) + a * x + b) % p);
+                const result2 = Array.from({ length: p }, (_, x) => Math.pow(x, 2) % p);
+
+                const XY = [];
+                for (let i = 0; i < result1.length; i++) {
+                    for (let j = 0; j < result2.length; j++) {
+                        if (result1[i] === result2[j]) {
+                            XY.push([i, j]);
+                        }
+                    }
+                }
+
+                const tableBody = document.querySelector('tbody');
+                tableBody.innerHTML = '';
+
+                // Define the number of rows and columns in each section
+                const rowsPerSection = 10; // Adjust this as needed
+                const columnsPerSection = 2; // Adjust this as needed
+
+                for (let i = 0; i < XY.length; i += rowsPerSection * columnsPerSection) {
+                    const sectionXY = XY.slice(i, i + rowsPerSection * columnsPerSection);
+
+                    for (let rowIdx = 0; rowIdx < rowsPerSection; rowIdx++) {
+                        const row = document.createElement('tr');
+
+                        for (let colIdx = 0; colIdx < columnsPerSection; colIdx++) {
+                            const [x, y] = sectionXY[rowIdx * columnsPerSection + colIdx] || ['', ''];
+                            const xCell = document.createElement('td');
+                            const yCell = document.createElement('td');
+                            xCell.textContent = x;
+                            yCell.textContent = y;
+                            row.appendChild(xCell);
+                            row.appendChild(yCell);
+                        }
+
+                        tableBody.appendChild(row);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

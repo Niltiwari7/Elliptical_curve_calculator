@@ -1,0 +1,18 @@
+
+/* Responsive layout for mobile screens */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sidebar {
+        display: block;
+    }
+
+    .content {
+        margin-top: 1rem;
+    }
+}
+
+

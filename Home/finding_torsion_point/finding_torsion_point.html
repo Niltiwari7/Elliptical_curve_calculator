@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Elliptical Curve Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="header bg-gray-100">
+    <div class="bg-black h-14 w-full flex justify-between items-center">
+        <div class="text-white hover:text-gray-100 text-2xl px-2 pt-2">
+            Elliptical Curve Calculator
+        </div>
+        <div class="nav bg-gray-800 p-4">
+            <a href="#" class="text-white hover:text-gray-400 px-2 py-1 text-xl">Home</a>
+            <a href="#" class="text-white hover:text-gray-400 px-2 py-1 text-xl">About</a>
+            <a href="#" class="text-white hover:text-gray-400 px-2 py-1 text-xl">Contact</a>
+            
+        </div>
+    </div>
+
+    <div class="flex">
+        <div class="sidebar h-screen bg-gray-200 p-4">
+            <div class="text-black font-serif text-xl">
+                <div class="py-4 hover:text-gray-400 cursor-pointer">Solution of Elliptical Curve</div>
+                <div class="py-4 hover:text-gray-400 cursor-pointer">Addition of Two Points on Elliptical Curve</div>
+                <div class="py-4 hover:text-gray-400 cursor-pointer">Find K*P on Elliptical Curve</div>
+                <div class="py-4 hover:text-gray-400 cursor-pointer"> Finding the Torsion Point </div>
+            </div>
+        </div>
+
+        <div class="content bg-slate-500 flex-grow p-10">
+            <div class="text-5xl px-1 text-white">Finding the Torsion Point</div>
+            <div class="text-4xl pt-2 pb-2">For elliptic curve <span class="text-red-500">E(F<sub>p</sub>)</span>: Y<sup>2</sup> = X<sup>3</sup> + AX + B, <span class="text-green-500">p prime</span></div>
+            <div class="a px-1 pt-5 text-xl">
+                <label for="a">Enter the coefficient of 'a':</label>
+                <input type="text" id="a" class="border rounded px-2 py-1">
+            </div>
+
+            <div class="b px-1 pt-5 text-xl">
+                <label for="b">Enter the coefficient of 'b':</label>
+                <input type="text" id="b" class="border rounded px-2 py-1">
+            </div>
+
+            <div class="c px-1 pt-5 text-xl">
+                <label for="c">Enter the modulo 'p':</label>
+                <input type="text" id="c" class="border rounded px-2 py-1">
+            </div>
+
+            <div class="pointP flex pt-5">
+                <div class="heading p-5 text-xl">
+                    <p>Enter the Point P</p>
+                </div>
+                <div class="pointPinput">
+                    <div class="xpoint pt-3">
+                        <label for="x">X:</label>
+                        <input type="number" name="X-coordinate" id="x" class="border rounded px-2 py-1">
+                    </div>
+                    <div class="ypoint pt-3">
+                        <label for="y">Y:</label>
+                        <input type="number" name="Y-coordinate" id="y" class="border rounded px-2 py-1">
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <button type="button" id="calculateButton" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 mt-5 text-xl">Calculate</button>
+            
+            <!-- Result container -->
+            <div id="resultContainer" class="result pt-5 text-3xl text-black"></div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-300 p-4 text-center footer">
+        <p class="text-gray-600 text-sm">&copy; 2023 Elliptical Curve Calculator. All Rights Reserved.</p>
+    </footer>
+    
+
+  
+   <script src="script.js"></script>
+</body>
+</html>
